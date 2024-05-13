@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FD-back-keyan.iml" filepath="$PROJECT_DIR$/FD-back-keyan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FD-back-server/FD-back-server.iml" filepath="$PROJECT_DIR$/FD-back-server/FD-back-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nacos1/nacos1.iml" filepath="$PROJECT_DIR$/nacos1/nacos1.iml" />
+    </modules>
+  </component>
+</project>

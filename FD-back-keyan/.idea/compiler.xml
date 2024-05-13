@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="FD-back-server" />
+        <module name="gateway" />
+        <module name="nacos1" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="FD-back-keyan" target="8" />
+      <module name="FD-back-server" target="8" />
+      <module name="gateway" target="8" />
+      <module name="nacos1" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="FD-back-keyan" options="-parameters" />
+      <module name="FD-back-server" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="nacos1" options="-parameters" />
+    </option>
+  </component>
+</project>
