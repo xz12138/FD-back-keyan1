@@ -9,11 +9,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -88,7 +91,9 @@ public class KGService {
         alarmInfRespository.delete(alarmInfRespository.findByName(alarmInfStr));
     }
 
-    private static final String UPLOAD_DIR = "L:\\IDEA2023.3.2\\IntelliJIDEA2023.3.2\\IdeaProjects\\springboot2\\FD-back-new\\src\\main\\resources\\uploads\\";
+    // 相对路径，打开工程FD-back-keyan是"FD-back-server/src/main/resources/uploads/"
+    // 打开工程FD-back-server是"src/main/resources/uploads/"
+    private static final String UPLOAD_DIR = "FD-back-server/src/main/resources/uploads/";
 
     // 建立知识图谱
     public String kgProcess(MultipartFile file) throws Exception {
@@ -97,16 +102,17 @@ public class KGService {
             return "redirect:/uploadFailure";
         }
 
+        String filename = UUID.randomUUID().toString().replace("-", "") + Objects.requireNonNull(file.getOriginalFilename()).substring(file.getOriginalFilename().indexOf('.'));
         try {
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOAD_DIR + file.getOriginalFilename());
+            Path path = Paths.get(UPLOAD_DIR + filename);
             Files.write(path, bytes);
         } catch (IOException e) {
             e.printStackTrace();
             return "redirect:/uploadFailure";
         }
 
-        List<Map<String, Object>> infoMaps = fileProcessService.readExcel(new File(UPLOAD_DIR + file.getOriginalFilename()));
+        List<Map<String, Object>> infoMaps = fileProcessService.readExcel(new File(UPLOAD_DIR + filename));
         for (Object alarmId : infoMaps.get(0).values()) {
             alarmIdRespository.save((AlarmId) alarmId);
         }
